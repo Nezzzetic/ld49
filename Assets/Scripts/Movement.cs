@@ -25,8 +25,9 @@ public class Movement : MonoBehaviour
         }
     }
 
-    void Move() {
-        transform.position+=transform.forward*Time.deltaTime*speed;
+    void Move()
+    {
+        transform.position += transform.forward * Time.deltaTime * speed;
     }
     void Spin() {
         var rnd=Random.Range(0,360);
@@ -34,6 +35,7 @@ public class Movement : MonoBehaviour
 
     void OnMouseDown() {
         speed++;
+        Spin();
     }
     
 

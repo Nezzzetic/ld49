@@ -27,6 +27,7 @@ public class SyncPositionWithLatency : MonoBehaviour
     private void FixedUpdate()
     {
         ProcessInput();
+        ProcessQ();
     }
 
     void ProcessInput()
@@ -51,8 +52,8 @@ public class SyncPositionWithLatency : MonoBehaviour
     //TODO поменять на подходящий для такой очереди "лист"
     void removePosInQ()
     {
-        var moveAction = moveCommands[0];
-        moveCommands.RemoveAt(0);
+        var moveAction = syncPosData[0];
+        syncPosData.RemoveAt(0);
         transform.position = moveAction + OffsetPosition;
     }
     

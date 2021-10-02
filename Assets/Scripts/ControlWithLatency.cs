@@ -34,12 +34,12 @@ public class ControlWithLatency : MonoBehaviour
         
         if (Input.GetKey(KeyCode.A))
         {
-            RCMovement.RotateAction(-1);
+            rotPressed=-1;
         }
         
         if (Input.GetKey(KeyCode.D))
         {
-            RCMovement.RotateAction(1);
+            rotPressed=1;
         }
     }
 

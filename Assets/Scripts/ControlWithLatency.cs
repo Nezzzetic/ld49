@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ControlWithLatency : MonoBehaviour
 {
-    public Transform SignalObj;
+    public Transform[] SignalObj;
     public float[] SignalDistances;
     public int[] LatencyValues;
     public int SignalLevel;
@@ -69,47 +69,34 @@ public class ControlWithLatency : MonoBehaviour
     
     void ProcessSignal()
     {
-        if (Vector3.Distance(SignalObj.position, transform.position)<SignalDistances[0])
+        var signal = 5;
+        foreach (var obj in SignalObj)
         {
-            if (SignalLevel!=1) {
-                SignalLevel = 1;
-                changeLatency();
+            if (Vector3.Distance(obj.position, transform.position)<SignalDistances[4] && signal>5)
+            {
+                signal = 5;
             }
-            return;
-        }
-        if (Vector3.Distance(SignalObj.position, transform.position)<SignalDistances[1])
-        {
-            if (SignalLevel!=2) {
-                SignalLevel = 2;
-                changeLatency();
+            if (Vector3.Distance(obj.position, transform.position)<SignalDistances[3] && signal>4)
+            {
+                signal = 4;
             }
-            return;
-        }
-        if (Vector3.Distance(SignalObj.position, transform.position)<SignalDistances[2])
-        {
-            if (SignalLevel!=3) {
-                SignalLevel = 3;
-                changeLatency();
+            if (Vector3.Distance(obj.position, transform.position)<SignalDistances[2] && signal>3)
+            {
+                signal = 3;
             }
-            return;
-        }
-        if (Vector3.Distance(SignalObj.position, transform.position)<SignalDistances[3])
-        {
-            if (SignalLevel!=4) {
-                SignalLevel = 4;
-                changeLatency();
+            if (Vector3.Distance(obj.position, transform.position)<SignalDistances[1] && signal>2)
+            {
+                signal = 2;
             }
-            return;
-        }
-        if (Vector3.Distance(SignalObj.position, transform.position)<SignalDistances[4])
-        {
-            if (SignalLevel!=5) {
-                SignalLevel = 5;
-                changeLatency();
+            if (Vector3.Distance(obj.position, transform.position)<SignalDistances[0] && signal>1)
+            {
+                signal = 1;
             }
-            return;
         }
-        
+        if (signal!=SignalLevel) {
+            SignalLevel = signal;
+            changeLatency();
+        }
     }
     
     void changeLatency()

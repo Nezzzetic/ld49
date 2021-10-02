@@ -9,7 +9,8 @@ public class SimpleMovement : MonoBehaviour
     private int rotationValue;
     public float moveSpeed;
     private int moveValue;
-    
+    public Vector3 grav = new Vector3(0,-9.81f,0);
+    public CharacterController CC;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class SimpleMovement : MonoBehaviour
     void Update()
     {
         
+        CC.Move(grav*Time.deltaTime);
     }
 
     private void FixedUpdate()
@@ -33,9 +35,11 @@ public class SimpleMovement : MonoBehaviour
         
         if (moveValue != 0)
         {
-            transform.position += transform.forward * moveSpeed;
+            CC.Move(transform.forward * moveSpeed);
+            //transform.position += transform.forward * moveSpeed;
             moveValue = 0;
         }
+        
     }
     
     //TODO плавный газ

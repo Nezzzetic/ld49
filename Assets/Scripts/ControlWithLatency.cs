@@ -173,7 +173,6 @@ public class ControlWithLatency : MonoBehaviour
     //TODO поменять на подходящий для такой очереди "лист"
     void removeRotActionInQ()
     {
-        Debug.Log(rotateCommands[0]+" "+rotateCommands[1]+" "+rotateCommands[2]+" "+rotateCommands[3]+" "+rotateCommands[4]);
         var rotAction = rotateCommands[0];
         rotateCommands.RemoveAt(0);
         rotateCommands.Add(10);

@@ -7,17 +7,21 @@ public class ControlWithLatency : MonoBehaviour
 {
     
     public SimpleMovement RCMovement;
-
+    public int LatencyValue;
     private List<int> moveCommands;
     private List<int> rotateCommands;
 
     private int movePressed;
     private int rotPressed;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        moveCommands=new List<int>() {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-        rotateCommands=new List<int>() {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        moveCommands= new List<int>();
+        rotateCommands= new List<int>();
+        for (var i=0;i<LatencyValue;i++) {
+            moveCommands.Add(0);
+            rotateCommands.Add(0);
+        }
     }
 
     // Update is called once per frame
@@ -57,7 +61,8 @@ public class ControlWithLatency : MonoBehaviour
 
     private void FixedUpdate()
     {
-        throw new NotImplementedException();
+        ProcessInput();
+        ProcessQ();
     }
 
     void addMoveActionInQ(int flag)

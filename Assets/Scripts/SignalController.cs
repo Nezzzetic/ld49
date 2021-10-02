@@ -20,8 +20,8 @@ public class Signal
 }
 public class SignalController : MonoBehaviour
 {
-    private ConnectionController ConnectionController;
-    private CommandProcessor CommandProcessor;
+    public ConnectionController ConnectionController;
+    public CommandProcessor CommandProcessor;
     private List<Signal> Signals;
     public int[] LatencyValues;
     public int[] LossValues;
@@ -29,6 +29,7 @@ public class SignalController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        Signals=new List<Signal>();
     }
 
     // Update is called once per frame
@@ -38,6 +39,7 @@ public class SignalController : MonoBehaviour
     }
     void ProcessSignals()
     {
+        if (Signals.Count == 0) return;
         var ready=new List<Signal>();
         foreach (var obj in Signals)
         {
@@ -60,7 +62,7 @@ public class SignalController : MonoBehaviour
         var ready=new List<Signal>();
         foreach (var obj in Signals)
         {
-            if (obj.SignalType==type && obj.Counter<obj.Counter)
+            if (obj.SignalType==type && obj.Counter<counter)
                 ready.Add(obj);
         }
         foreach (var obj in ready)

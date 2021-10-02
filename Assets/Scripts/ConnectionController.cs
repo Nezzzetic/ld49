@@ -36,7 +36,7 @@ public class ConnectionController : MonoBehaviour
         {
             marker.SetActive(false);
         }
-        SignalMarkers[SignalLevel-1].SetActive(true);
+        SignalMarkers[SignalLevel].SetActive(true);
     }
     
     int checkConnectionToConnector(Connector connector)

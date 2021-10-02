@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,22 +13,32 @@ public class SimpleControl : MonoBehaviour
         
     }
 
+    private int move = 0;
+    private int rot = 0;
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.W))
         {
-            SignalController.ReceiveSignal(SignalType.move,1);
+            move = 1;
         }
         
         if (Input.GetKey(KeyCode.A))
         {
-            SignalController.ReceiveSignal(SignalType.rotation,-1);
+            rot = -1;
         }
         
         if (Input.GetKey(KeyCode.D))
         {
-            SignalController.ReceiveSignal(SignalType.rotation,1);
+            rot = 1;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        SignalController.ReceiveSignal(SignalType.move,move);
+            move = 0;
+            SignalController.ReceiveSignal(SignalType.rotation,rot);
+            rot = 0;
     }
 }

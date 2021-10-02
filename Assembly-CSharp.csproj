@@ -54,7 +54,6 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\SimpleControl.cs" />
      <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
-     <Compile Include="Assets\Scripts\ControlWithLatency.cs" />
      <Compile Include="Assets\Scripts\SimpleBattery.cs" />
      <Compile Include="Assets\Scripts\Connector.cs" />
      <Compile Include="Assets\Scripts\SyncPositionWithLatency.cs" />

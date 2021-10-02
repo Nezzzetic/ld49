@@ -415,7 +415,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677634951}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.06, y: 0, z: 10.64}
+  m_LocalPosition: {x: -9.59, y: 0, z: 11.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 505166376}
@@ -438,6 +438,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: addb54d45aaf2614d8edb7102d719809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ConnectionController: {fileID: 677634960}
+  CommandProcessor: {fileID: 677634961}
   LatencyValues: 78000000500000002800000014000000
   LossValues: 0a000000320000005a00000064000000
 --- !u!114 &677634954
@@ -1383,7 +1385,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1cf047cc70799044e8a7698d59548b6e, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1cf047cc70799044e8a7698d59548b6e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2585,7 +2587,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c1e25f623d4b33d48917d933322fd000, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c1e25f623d4b33d48917d933322fd000, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2746,7 +2748,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4857291375578109130, guid: 3bcdddf999b892946938598849c8dcfa, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4857291375578109130, guid: 3bcdddf999b892946938598849c8dcfa, type: 3}
       propertyPath: m_LocalPosition.x

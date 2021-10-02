@@ -440,6 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConnectionController: {fileID: 677634960}
   CommandProcessor: {fileID: 677634961}
+  Signals: []
   LatencyValues: 78000000500000002800000014000000
   LossValues: 0a000000320000005a00000064000000
 --- !u!114 &677634954
@@ -458,6 +459,7 @@ MonoBehaviour:
   moveSpeed: 0.1
   grav: {x: 0, y: -9.81, z: 0}
   CC: {fileID: 677634958}
+  SimpleBattery: {fileID: 677634959}
 --- !u!65 &677634955
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -545,15 +547,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677634951}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84ecc705172d2d24d987163adf8c0b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BatteryMax: 20
   Battery: 0
-  BatterySpeed: 1
-  SimpleMovement: {fileID: 677634954}
+  BatterySpeed: 0.01
+  BatteryEnd: 0
 --- !u!114 &677634960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,6 +590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Movement: {fileID: 677634954}
+  SimpleBattery: {fileID: 677634959}
 --- !u!114 &677634962
 MonoBehaviour:
   m_ObjectHideFlags: 0

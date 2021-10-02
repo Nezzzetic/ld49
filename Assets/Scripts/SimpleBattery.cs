@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class SimpleBattery : MonoBehaviour
     public float BatteryMax;
     public float Battery;
     public float BatterySpeed;
-    public SimpleMovement SimpleMovement;
+    public bool BatteryEnd=false;
     // Start is called before the first frame update
     void Awake()
     {
@@ -17,15 +18,25 @@ public class SimpleBattery : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Battery > 0)
-        {
-            Battery -= BatterySpeed * Time.deltaTime;
-        }
 
-        if (Battery <= 0)
-        {
-            Debug.Log("Battery Off");
-            SimpleMovement.enabled = false;
-        }
     }
+
+    private void FixedUpdate()
+    {
+        processBatteryLossFromTime();
+        if (!BatteryEnd) checkBatteryEnd();
+    }
+
+    void processBatteryLossFromTime()
+    {
+        if (!BatteryEnd)
+            Battery -= BatterySpeed;
+    }
+    
+    void checkBatteryEnd()
+    {
+        if (Battery < 0)
+            BatteryEnd = true;
+    }
+    
 }

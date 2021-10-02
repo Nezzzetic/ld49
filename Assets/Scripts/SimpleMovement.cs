@@ -11,6 +11,7 @@ public class SimpleMovement : MonoBehaviour
     private int moveValue;
     public Vector3 grav = new Vector3(0,-9.81f,0);
     public CharacterController CC;
+    public SimpleBattery SimpleBattery;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,12 +44,14 @@ public class SimpleMovement : MonoBehaviour
     
     public void MoveAction()
     {
+        if (SimpleBattery.Battery<0) return;
         CC.Move(transform.forward * moveSpeed * moveValue);
     }
     
     //TODO плавный поворот
     public void RotateAction()
     {
+        if (SimpleBattery.Battery<0) return;
         transform.Rotate(new Vector3(0, rotationSpeed * rotationValue, 0));
     }
     

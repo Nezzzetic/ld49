@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ControlWithLatency : MonoBehaviour
 {
+    public GameObject[] SignalMarkers;
     public Transform[] SignalObj;
     public float[] SignalDistances;
     public int[] LatencyValues;
+    public int[] LossValues;
     public int SignalLevel;
     public SimpleMovement RCMovement;
     public int LatencyValue;
@@ -96,6 +99,11 @@ public class ControlWithLatency : MonoBehaviour
         if (signal!=SignalLevel) {
             SignalLevel = signal;
             changeLatency();
+            foreach (var marker in SignalMarkers)
+            {
+                marker.SetActive(false);
+            }
+            SignalMarkers[SignalLevel-1].SetActive(true);
         }
     }
     
@@ -136,8 +144,11 @@ public class ControlWithLatency : MonoBehaviour
 
     void addMoveActionInQ(int flag)
     {
-        
-        moveCommands[LatencyValue] = flag;
+        int rnd = Random.Range(0, 100);
+        if (rnd < LossValues[SignalLevel - 1])
+            moveCommands[LatencyValue] = flag;
+        else
+            moveCommands[LatencyValue] = 10;
     }
     
     
@@ -167,7 +178,11 @@ public class ControlWithLatency : MonoBehaviour
     
     void addRotActionInQ(int direction)
     {
-        rotateCommands[LatencyValue] = direction;
+        int rnd = Random.Range(0, 100);
+        if (rnd < LossValues[SignalLevel - 1])
+            rotateCommands[LatencyValue] = direction;
+        else
+            rotateCommands[LatencyValue] = 10;
     }
     
     //TODO поменять на подходящий для такой очереди "лист"

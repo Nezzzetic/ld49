@@ -26,31 +26,34 @@ public class SimpleMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
-        if (rotationValue != 0)
-        {
-            transform.Rotate(new Vector3(0,rotationSpeed*rotationValue,0));
-            rotationValue = 0;
-        }
-        
-        if (moveValue != 0)
-        {
-            CC.Move(transform.forward * moveSpeed);
-            //transform.position += transform.forward * moveSpeed;
-            moveValue = 0;
-        }
-        
+        MoveAction();
+        RotateAction();
+        GravityAction();
     }
     
-    //TODO плавный газ
-    public void MoveForwardAction()
+    public void SetMoveState(int state)
     {
-        moveValue = 1;
+        moveValue = state;
+    }
+    
+    public void SetRotState(int state)
+    {
+        rotationValue = state;
+    }
+    
+    public void MoveAction()
+    {
+        CC.Move(transform.forward * moveSpeed * moveValue);
     }
     
     //TODO плавный поворот
-    public void RotateAction(int direction)
+    public void RotateAction()
     {
-        rotationValue = direction;
+        transform.Rotate(new Vector3(0, rotationSpeed * rotationValue, 0));
+    }
+    
+    public void GravityAction()
+    {
+        CC.Move(grav*0.04f);
     }
 }

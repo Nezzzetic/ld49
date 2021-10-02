@@ -5,7 +5,7 @@ using UnityEngine;
 public class SimpleControl : MonoBehaviour
 {
 
-    public SimpleMovement RCMovement;
+    public SignalController SignalController;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,17 +17,17 @@ public class SimpleControl : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            RCMovement.MoveForwardAction();
+            SignalController.ReceiveSignal(SignalType.move,1);
         }
         
         if (Input.GetKey(KeyCode.A))
         {
-            RCMovement.RotateAction(-1);
+            SignalController.ReceiveSignal(SignalType.rotation,-1);
         }
         
         if (Input.GetKey(KeyCode.D))
         {
-            RCMovement.RotateAction(1);
+            SignalController.ReceiveSignal(SignalType.rotation,1);
         }
     }
 }

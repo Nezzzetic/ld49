@@ -60,6 +60,9 @@
      <Compile Include="Assets\Scripts\SyncPositionWithLatency.cs" />
      <Compile Include="Assets\Scripts\SimpleMovement.cs" />
      <Compile Include="Assets\Scripts\SyncPosition.cs" />
+     <Compile Include="Assets\Scripts\CommandProcessor.cs" />
+     <Compile Include="Assets\Scripts\SignalController.cs" />
+     <Compile Include="Assets\Scripts\ConnectionController.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.19f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

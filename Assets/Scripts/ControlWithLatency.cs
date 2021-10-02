@@ -18,8 +18,6 @@ public class ControlWithLatency : MonoBehaviour
     
     private List<int> moveCommands;
     private List<int> rotateCommands;
-    private int lastMoveCommand;
-    private int lastRotCommand;
 
     private int movePressed;
     private int rotPressed;
@@ -160,20 +158,6 @@ public class ControlWithLatency : MonoBehaviour
         moveCommands.RemoveAt(0);
         moveCommands.Add(10);
 
-        if (moveAction == 10)
-        {
-            if (lastMoveCommand == 1)
-            {
-                RCMovement.MoveForwardAction(); 
-                return;
-            }
-        }
-        else
-            lastMoveCommand = moveAction;
-        if (moveAction == 1)
-        {
-            RCMovement.MoveForwardAction();
-        }
     }
     
     void addRotActionInQ(int direction)
@@ -191,20 +175,6 @@ public class ControlWithLatency : MonoBehaviour
         var rotAction = rotateCommands[0];
         rotateCommands.RemoveAt(0);
         rotateCommands.Add(10);
-        
-        if (rotAction == 10)
-        {
-            if (lastRotCommand == 1 || lastRotCommand==-1)
-            {
-                RCMovement.RotateAction(lastRotCommand);
-                return;
-            }
-        }
-        else
-            lastRotCommand = rotAction;
-        if (rotAction == 1 || rotAction==-1)
-        {
-            RCMovement.RotateAction(rotAction);
-        }
+
     }
 }

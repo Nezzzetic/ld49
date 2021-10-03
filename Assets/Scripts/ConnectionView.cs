@@ -7,6 +7,7 @@ public class ConnectionView : MonoBehaviour
 {
 
     public Image[] Images;
+    public GameObject Unstable;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,5 +30,7 @@ public class ConnectionView : MonoBehaviour
         {
             Images[i].enabled = true;
         }
+
+        Unstable.SetActive(count < 2);
     }
 }

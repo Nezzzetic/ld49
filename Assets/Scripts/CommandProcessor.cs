@@ -8,6 +8,7 @@ public class CommandProcessor : MonoBehaviour
     private int rotCommand;
     public SimpleMovement Movement;
     public SimpleBattery SimpleBattery;
+    public Transform FXNest;
 
     public void ProcessMoveCommand(int command)
     {

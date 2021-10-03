@@ -26,7 +26,7 @@ public class ConnectionView : MonoBehaviour
         {
             Images[i].enabled = false;
         }
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < count+1; i++)
         {
             Images[i].enabled = true;
         }

@@ -7,7 +7,9 @@ public class BatteryView : MonoBehaviour
 {
     
     public Image[] Images;
-    
+
+    public GameObject LowBattery;
+    public GameObject LowBattery2;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,10 +25,10 @@ public class BatteryView : MonoBehaviour
     public void UpdateBat(float capacity)
     {
         var count = 0;
-        if (capacity > 0.2f) count = 1;
-        if (capacity > 0.4f) count = 2;
-        if (capacity > 0.6f) count = 3;
-        if (capacity > 0.8f) count = 4;
+        if (capacity > 0.2f) count = 2;
+        if (capacity > 0.4f) count = 3;
+        if (capacity > 0.6f) count = 4;
+        if (capacity > 0.8f) count = 5;
         for (int i = 0; i < Images.Length; i++)
         {
             Images[i].enabled = false;
@@ -35,5 +37,14 @@ public class BatteryView : MonoBehaviour
         {
             Images[i].enabled = true;
         }
+
+        if (count == 0)
+        {
+            LowBattery.SetActive(true);
+            LowBattery2.SetActive(true);
+            gameObject.SetActive(false);
+        }
+            
+
     }
 }

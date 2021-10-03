@@ -8,7 +8,9 @@ public class ConnectionController : MonoBehaviour
 {
     public GameObject[] SignalMarkers;
     public Connector[] SignalObj;
+    public int LastSignalLevel;
     public int SignalLevel;
+    public SignalBlocker currentBlocker;
 
     void ProcessSignal()
     {
@@ -19,8 +21,21 @@ public class ConnectionController : MonoBehaviour
             if (res > signal)
                 signal = res;
         }
-        if (signal!=SignalLevel) {
-            SignalLevel = signal;
+
+        SignalLevel = signal;
+    }
+    
+    void ProcessSignalBlock()
+    {
+        if (currentBlocker == null) return;
+        SignalLevel -= currentBlocker.SignalLevel;
+        if (SignalLevel < 0) SignalLevel = 0;
+    }
+
+    void SignalChangeCheck()
+    {
+        if (SignalLevel!=LastSignalLevel) {
+            LastSignalLevel = SignalLevel;
             ConnectionChanged();
         }
     }
@@ -28,6 +43,8 @@ public class ConnectionController : MonoBehaviour
     private void FixedUpdate()
     {
         ProcessSignal();
+        ProcessSignalBlock();
+        SignalChangeCheck();
     }
 
     void ConnectionChanged()
@@ -47,5 +64,22 @@ public class ConnectionController : MonoBehaviour
                 signal = connector.SignalLevels[i];
         return signal;
     }
-     
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var block = other.GetComponent<SignalBlocker>();
+        if (block != null)
+        {
+            currentBlocker = block;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        var block = other.GetComponent<SignalBlocker>();
+        if (block != null)
+        {
+            currentBlocker = null;
+        }
+    }
 }

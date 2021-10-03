@@ -17,8 +17,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        var rndTimeNextAddition = Random.Range(0,SpawnTimeDelta);
-        timer = SpawnTime + rndTimeNextAddition;
+        timer = 1;
     }
 
     // Update is called once per frame

@@ -15,5 +15,6 @@ public class MoveForward : MonoBehaviour
     void Update()
     {
         transform.position += Direction * Time.deltaTime;
+        
     }
 }

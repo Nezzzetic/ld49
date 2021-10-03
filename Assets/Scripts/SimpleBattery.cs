@@ -9,6 +9,8 @@ public class SimpleBattery : MonoBehaviour
     public float Battery;
     public float BatterySpeed;
     public bool BatteryEnd=false;
+    public GameObject LoseScreen;
+    public BatteryView BatteryView;
     // Start is called before the first frame update
     void Awake()
     {
@@ -30,13 +32,20 @@ public class SimpleBattery : MonoBehaviour
     void processBatteryLossFromTime()
     {
         if (!BatteryEnd)
+        {
             Battery -= BatterySpeed;
+            BatteryView.UpdateBat(Battery/BatteryMax);
+        }
+
     }
     
     void checkBatteryEnd()
     {
         if (Battery < 0)
+        {
             BatteryEnd = true;
+            LoseScreen.SetActive(true);
+        }
     }
     
 }

@@ -52,6 +52,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\ConnectionView.cs" />
      <Compile Include="Assets\Scripts\SimpleControl.cs" />
      <Compile Include="Assets\Scripts\SignalBlocker.cs" />
      <Compile Include="Assets\Scripts\CameraSwitch.cs" />
@@ -65,7 +66,9 @@
      <Compile Include="Assets\Scripts\ConnectionController.cs" />
      <Compile Include="Assets\Scripts\SignalController.cs" />
      <Compile Include="Assets\Scripts\CommandProcessor.cs" />
+     <Compile Include="Assets\Scripts\BatteryView.cs" />
      <Compile Include="Assets\Scripts\SyncPosition.cs" />
+     <Compile Include="Assets\Scripts\GameController.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.19f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

@@ -12,7 +12,7 @@ public class ConnectionController : MonoBehaviour
     public int LastSignalLevel;
     public int SignalLevel;
     public SignalBlocker currentBlocker;
-
+    public ConnectionView ConnectionView;
     private void Awake()
     {
         SignalObj = Antenas.GetComponentsInChildren<Connector>();
@@ -60,6 +60,7 @@ public class ConnectionController : MonoBehaviour
             marker.SetActive(false);
         }
         SignalMarkers[SignalLevel].SetActive(true);
+        ConnectionView.UpdateConnection(SignalLevel);
     }
     
     int checkConnectionToConnector(Connector connector)

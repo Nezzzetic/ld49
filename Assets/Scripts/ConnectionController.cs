@@ -8,9 +8,15 @@ public class ConnectionController : MonoBehaviour
 {
     public GameObject[] SignalMarkers;
     public Connector[] SignalObj;
+    public Transform Antenas;
     public int LastSignalLevel;
     public int SignalLevel;
     public SignalBlocker currentBlocker;
+
+    private void Awake()
+    {
+        SignalObj = Antenas.GetComponentsInChildren<Connector>();
+    }
 
     void ProcessSignal()
     {

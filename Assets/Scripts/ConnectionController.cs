@@ -13,6 +13,11 @@ public class ConnectionController : MonoBehaviour
     public int SignalLevel;
     public SignalBlocker currentBlocker;
     public ConnectionView ConnectionView;
+    public AudioSource Noise;
+    public AudioSource Beep;
+    
+    public float[] NoiseVol;
+    public float[] BeepVol;
     private void Awake()
     {
         SignalObj = Antenas.GetComponentsInChildren<Connector>();
@@ -61,6 +66,8 @@ public class ConnectionController : MonoBehaviour
         }
         SignalMarkers[SignalLevel].SetActive(true);
         ConnectionView.UpdateConnection(SignalLevel);
+        Noise.volume = NoiseVol[SignalLevel];
+        Beep.volume = BeepVol[SignalLevel];
     }
     
     int checkConnectionToConnector(Connector connector)
